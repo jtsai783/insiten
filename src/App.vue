@@ -1,28 +1,40 @@
+
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="app" class="uk-padding">
+    <div class="uk-text-lead uk-text-center title uk-margin uk-width-1-1">Target Companies</div>
+    <hr/>
+    <List></List>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import List from './components/list.vue'
 
 export default {
   name: 'app',
   components: {
-    HelloWorld
+    List
+  },
+  mounted(){
+    this.$store.dispatch('fetchTarget');
   }
 }
 </script>
 
-<style>
+<style scoped>
+hr{
+    border: 0;
+    height: 1px;
+    background: #333;
+    background-image: linear-gradient(to right, #ccc, #333, #ccc);
+}
+
+.title{
+  font-size: 3rem;
+}
+
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  min-height: calc(100vh - 80px);
+  background-color: #efefef;
 }
 </style>
